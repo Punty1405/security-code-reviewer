@@ -1,4 +1,5 @@
 from langgraph.graph import StateGraph, START, END
+from langsmith import traceable
 from src.schemas import AgentState
 from src.nodes.bandit_node import run_bandit
 from src.nodes.context_node import retrieve_context
@@ -31,9 +32,31 @@ def build_graph():
     # compile
     return graph.compile()
 
+@traceable(name='security_review_dag', tags=['test'])
+def run_security_review(zip_path: str, diff_text: str, tags=None):
+    """
+    Wrapper to run DAG with additional metadata
+    """
+
+    app = build_graph()
+
+    result = app.invoke(
+        {'zip_path': zip_path, 'diff_text': diff_text},
+        config={
+            'run_name': 'security_review',
+            'tags': tags or ['test'],
+            'metadata': {
+                'zip_path': zip_path,
+                'has_diff': bool(diff_text)
+                }
+            }
+        )
+
+    return result
+
 if __name__=='__main__':
     # Test the graph structure
-    app = build_graph()
+    # app = build_graph()
 
     # Creating a proper diff
     test_diff = """diff --git a/src/routes.py b/src/routes.py
@@ -47,10 +70,11 @@ index 1234567..abcdefg 100644
 """
 
     # Run with dummy input
-    result = app.invoke({
-        "zip_path": "/tmp/test.zip",
-        "diff_text": test_diff
-    })
+    result = run_security_review(
+        "/tmp/test.zip",
+        test_diff,
+        tags=['manual-test', 'development']
+    )
 
     print("\n=== FINAL OUTPUT ===")
     print("\nJSON:")
