@@ -4,6 +4,7 @@ from src.nodes.bandit_node import run_bandit
 from src.nodes.context_node import retrieve_context
 from src.nodes.semantic_node import semantic_review
 from src.nodes.reconciler_node import reconcile_findings
+import json
 
 def build_graph():
     """
@@ -51,9 +52,8 @@ index 1234567..abcdefg 100644
         "diff_text": test_diff
     })
 
-    print("\n=== Graph executed successfully ===")
-    print(f"Changed files: {result['changed_files']}")
-    print(f"File contents: {list(result['file_contents'].keys())}")
-    print(f"Dependencies: {result['dependencies']}")
-    # print(f"Final state keys: {result.keys()}")
-
+    print("\n=== FINAL OUTPUT ===")
+    print("\nJSON:")
+    print(json.dumps(result['final_json'], indent=2))
+    print("\nMarkdown:")
+    print(result['final_markdown'])
