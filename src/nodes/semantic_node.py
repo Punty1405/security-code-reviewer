@@ -99,7 +99,7 @@ def parse_llm_response(response: str) -> Dict:
         'semantic_only': findings.get('semantic_only', [])
         }
     
-    except json.JSONDecoderError as e:
+    except json.JSONDecodeError as e:
         print(f"Failed to parse LLM response: {e}")
         print(f"Response as follows: {response}")
         return {
