@@ -34,12 +34,26 @@ if __name__=='__main__':
     # Test the graph structure
     app = build_graph()
 
+    # Creating a proper diff
+    test_diff = """diff --git a/src/routes.py b/src/routes.py
+index 1234567..abcdefg 100644
+--- a/src/routes.py
++++ b/src/routes.py
+@@ -1,3 +1,4 @@
++import subprocess
+ def process():
+     pass
+"""
+
     # Run with dummy input
     result = app.invoke({
         "zip_path": "/tmp/test.zip",
-        "diff_text": "dummy diff"
+        "diff_text": test_diff
     })
 
     print("\n=== Graph executed successfully ===")
-    print(f"Final state keys: {result.keys()}")
+    print(f"Changed files: {result['changed_files']}")
+    print(f"File contents: {list(result['file_contents'].keys())}")
+    print(f"Dependencies: {result['dependencies']}")
+    # print(f"Final state keys: {result.keys()}")
 
