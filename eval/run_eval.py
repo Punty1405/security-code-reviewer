@@ -69,4 +69,3 @@ if __name__=='__main__':
     max_examples = int(sys.argv[1]) if len(sys.argv) > 1 and isinstance(sys.argv[1], int) else None
 
     main(max_examples)
-
