@@ -40,15 +40,7 @@ jobs:
     - name: Check metrics threshold
       run: |
         source .venv/bin/activate
-        python -c "
-import json
-with open('eval/results.json') as f:
-    data = json.load(f)
-metrics = data['metrics']['semantic_reviewer']
-assert metrics['f1'] >= 0.95, f'F1 {metrics[\"f1\"]:.3f} below threshold 0.95'
-assert metrics['recall'] >= 0.95, f'Recall {metrics[\"recall\"]:.3f} below threshold 0.95'
-print('✓ Metrics pass threshold')
-        "
+        python eval/check_threshold.py
     
     - name: Upload eval results
       if: always()
