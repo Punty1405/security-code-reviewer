@@ -1,0 +1,2016 @@
+{
+  "metrics": {
+    "total_examples": 75,
+    "successful_runs": 75,
+    "failed_runs": 0,
+    "bandit_baseline": {
+      "true_positives": 46,
+      "false_positives": 0,
+      "false_negatives": 29,
+      "precision": 1.0,
+      "recall": 0.613,
+      "f1": 0.76
+    },
+    "semantic_reviewer": {
+      "true_positives": 75,
+      "false_positives": 2,
+      "false_negatives": 0,
+      "precision": 0.974,
+      "recall": 1.0,
+      "f1": 0.987
+    },
+    "improvement": {
+      "precision_gain": -0.026,
+      "recall_gain": 0.387,
+      "f1_gain": 0.227
+    }
+  },
+  "results": [
+    {
+      "example_id": "cwe_89_fastapi_001",
+      "cwe": "CWE-89",
+      "example_line": 23,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpyiitp_2f/src/fastapi_routes.py",
+            "line_number": 23,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The use of f-strings to construct the SQL query with the variable 'sort_by' allows for SQL injection if 'sort_by' is not properly validated. Although there is a regex constraint, it does not prevent all forms of injection, especially if the regex is bypassed."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_flask_002",
+      "cwe": "CWE-89",
+      "example_line": 15,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpxnti5ibj/src/flask_routes.py",
+            "line_number": 15,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The code constructs an SQL query using string interpolation for the LIMIT and OFFSET parameters, which can lead to SQL injection if these parameters are not properly validated or sanitized."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_fastapi_003",
+      "cwe": "CWE-89",
+      "example_line": 14,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpo_zz3tov/src/fastapi_routes.py",
+            "line_number": 14,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The use of f-string to construct the SQL query with user input (date_str) directly allows for SQL injection, as the table name is not sanitized or validated."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_flask_004",
+      "cwe": "CWE-89",
+      "example_line": 15,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpg4rfp926/src/flask_routes.py",
+            "line_number": 15,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The code constructs an SQL query using string formatting with user-controlled input (the 'field' variable), which can lead to SQL injection if the input is not properly validated."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_fastapi_005",
+      "cwe": "CWE-89",
+      "example_line": 11,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpcutl8d7r/src/fastapi_routes.py",
+            "line_number": 11,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The use of f-string for 'search_type' allows for SQL injection if an attacker can control this parameter. This is a valid vulnerability."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_flask_006",
+      "cwe": "CWE-89",
+      "example_line": 12,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpb8j72dkh/src/flask_routes.py",
+            "line_number": 13,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The use of f-string for constructing the SQL query allows for the injection of arbitrary SQL code through the 'order' parameter, which is directly taken from user input without validation or sanitization."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_fastapi_007",
+      "cwe": "CWE-89",
+      "example_line": 16,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-89",
+            "file": "src/fastapi_routes.py",
+            "line": 10,
+            "description": "SQL Injection vulnerability due to the use of string formatting with user-controlled input (target_key) in the SQL query."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_89_flask_008",
+      "cwe": "CWE-89",
+      "example_line": 17,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmp5imdl9mh/src/flask_routes.py",
+            "line_number": 18,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The code constructs an SQL query using user input (report_type) that is not properly validated, allowing for SQL injection if the input does not match the expected keys in table_map."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_fastapi_009",
+      "cwe": "CWE-89",
+      "example_line": 14,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpv1nmn7mz/src/fastapi_routes.py",
+            "line_number": 15,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The code constructs an SQL query using string interpolation with user input (clean_ids), which can lead to SQL injection if the input is not properly sanitized."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_flask_010",
+      "cwe": "CWE-89",
+      "example_line": 15,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpoqsmjnnl/src/flask_routes.py",
+            "line_number": 16,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The use of string-based query construction with user input (user_dir) in the SQL query can lead to SQL injection vulnerabilities, as the input is not sanitized or validated."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_fastapi_011",
+      "cwe": "CWE-89",
+      "example_line": 14,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpkrzd5gvx/src/fastapi_routes.py",
+            "line_number": 14,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The use of string formatting with user input (x_partition_id) to construct SQL queries allows for SQL injection. The header value can be manipulated to include SQL commands, leading to potential unauthorized data access."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_flask_012",
+      "cwe": "CWE-89",
+      "example_line": 10,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpw2k_ting/src/flask_routes.py",
+            "line_number": 21,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The code constructs an SQL query using string interpolation with user-provided data, specifically the column names derived from the `user_data` dictionary. This allows for potential SQL injection if the keys in `user_data` are not properly validated or sanitized."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_fastapi_013",
+      "cwe": "CWE-89",
+      "example_line": 13,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmp8yv7_11a/src/fastapi_routes.py",
+            "line_number": 15,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The use of string formatting to construct the SQL query with the 'table' variable allows for SQL injection if 'client_type' is not properly validated, as it can be influenced by user input."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_flask_014",
+      "cwe": "CWE-89",
+      "example_line": 17,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpxfgr3v6b/src/flask_routes.py",
+            "line_number": 19,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The use of f-string to construct the SQL query with user input (state.sort_column) allows for SQL injection, as the input is not sanitized or validated."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_fastapi_015",
+      "cwe": "CWE-89",
+      "example_line": 15,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpfuvzdwjd/src/fastapi_routes.py",
+            "line_number": 16,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "MEDIUM",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The use of f-string to construct the SQL query with user input (year) creates a direct SQL injection vulnerability, as an attacker can manipulate the 'year' parameter to execute arbitrary SQL commands."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_flask_016",
+      "cwe": "CWE-89",
+      "example_line": 15,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpv9n3w5a5/src/flask_routes.py",
+            "line_number": 16,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The code constructs an SQL query using user input without proper parameterization, making it vulnerable to SQL injection. The custom sanitizer does not adequately protect against all forms of injection."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_fastapi_017",
+      "cwe": "CWE-89",
+      "example_line": 13,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpsrk4yrsv/src/fastapi_routes.py",
+            "line_number": 15,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The code constructs an SQL query using user input (fields) without proper sanitization, making it vulnerable to SQL injection."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_flask_018",
+      "cwe": "CWE-89",
+      "example_line": 21,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmp6owqomvj/src/flask_routes.py",
+            "line_number": 22,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The use of the variable 'column' in the SQL query construction allows for potential SQL injection if an attacker can manipulate the 'filter_type' parameter to inject arbitrary SQL. Although FILTER_MAP limits the options, it does not prevent all possibilities."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_fastapi_019",
+      "cwe": "CWE-89",
+      "example_line": 13,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpal53gktw/src/fastapi_routes.py",
+            "line_number": 14,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The code constructs an SQL query by concatenating user-controlled input (site_id from a Cookie) directly into the query string, which can lead to SQL injection vulnerabilities."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_flask_020",
+      "cwe": "CWE-89",
+      "example_line": 16,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmppyfpna_g/src/flask_routes.py",
+            "line_number": 18,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The use of 'sanitize_identifier' does not adequately protect against SQL injection, as it only removes spaces. An attacker could still inject malicious SQL through the 'attribute' parameter."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_fastapi_021",
+      "cwe": "CWE-89",
+      "example_line": 15,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmplfkg8y4o/src/fastapi_routes.py",
+            "line_number": 16,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The use of f-strings to construct the SQL query allows for the possibility of SQL injection if the 'sort_field' parameter is controlled by the user. An attacker could manipulate this parameter to execute arbitrary SQL commands."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_flask_022",
+      "cwe": "CWE-89",
+      "example_line": 15,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpauyw73zt/src/flask_routes.py",
+            "line_number": 16,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "MEDIUM",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The code constructs an SQL query using string concatenation with user input (shard_id), which can lead to SQL injection vulnerabilities."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_fastapi_023",
+      "cwe": "CWE-89",
+      "example_line": 13,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpwuqq594c/src/fastapi_routes.py",
+            "line_number": 14,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The use of string interpolation to construct the SQL query with user input (filter_clause) creates a direct SQL injection vulnerability, as the input is not properly sanitized or parameterized."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_89_flask_024",
+      "cwe": "CWE-89",
+      "example_line": 11,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-89",
+            "file": "src/flask_routes.py",
+            "line": 8,
+            "description": "SQL Injection vulnerability due to concatenation of user input 'tag_name' into the SQL query without proper sanitization or parameterization."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_89_fastapi_025",
+      "cwe": "CWE-89",
+      "example_line": 15,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmp7f0yc_om/src/fastapi_routes.py",
+            "line_number": 16,
+            "issue_text": "Possible SQL injection vector through string-based query construction.",
+            "severity": "MEDIUM",
+            "confidence": "LOW",
+            "test_id": "B608",
+            "cwe_id": 89
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B608",
+            "reasoning": "The dynamic construction of the SQL query using the 'role' variable allows for SQL injection if 'role' is controlled by the user. This is a valid vulnerability."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_78_fastapi_001",
+      "cwe": "CWE-78",
+      "example_line": 18,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmp5yrjwj6k/src/fastapi_routes.py",
+            "line_number": 2,
+            "issue_text": "Consider possible security implications associated with the subprocess module.",
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "test_id": "B404",
+            "cwe_id": 78
+          },
+          {
+            "filename": "/tmp/tmp5yrjwj6k/src/fastapi_routes.py",
+            "line_number": 9,
+            "issue_text": "subprocess call - check for execution of untrusted input.",
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "test_id": "B603",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B404",
+            "reasoning": "The use of the subprocess module can lead to command injection vulnerabilities if untrusted input is passed to it. The code does not sanitize the 'filename' input, which could allow an attacker to execute arbitrary commands."
+          },
+          {
+            "bandit_id": "B603",
+            "reasoning": "The subprocess call is made with user-controlled input ('filename'), which can lead to command injection if the input is not properly validated or sanitized."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-78",
+            "file": "src/fastapi_routes.py",
+            "line": 9,
+            "description": "The 'filename' parameter is directly appended to the command list without validation, allowing for potential command injection."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_78_flask_002",
+      "cwe": "CWE-78",
+      "example_line": 11,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmp0uapqarq/src/flask_routes.py",
+            "line_number": 12,
+            "issue_text": "Starting a process with a shell, possible injection detected, security issue.",
+            "severity": "HIGH",
+            "confidence": "HIGH",
+            "test_id": "B605",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B605",
+            "reasoning": "The use of os.popen with user-controlled input (host) allows for command injection, as the input is not sanitized or validated before being included in the command string."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_78_fastapi_003",
+      "cwe": "CWE-78",
+      "example_line": 17,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpbai5mdg7/src/fastapi_routes.py",
+            "line_number": 2,
+            "issue_text": "Consider possible security implications associated with the subprocess module.",
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "test_id": "B404",
+            "cwe_id": 78
+          },
+          {
+            "filename": "/tmp/tmpbai5mdg7/src/fastapi_routes.py",
+            "line_number": 19,
+            "issue_text": "Starting a process with a shell, possible injection detected, security issue.",
+            "severity": "HIGH",
+            "confidence": "HIGH",
+            "test_id": "B605",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B404",
+            "reasoning": "The use of the subprocess module can lead to command injection vulnerabilities, especially when user input is involved."
+          },
+          {
+            "bandit_id": "B605",
+            "reasoning": "The command is constructed and executed in a shell context, which allows for command injection through the img_path and scale parameters."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_78_flask_004",
+      "cwe": "CWE-78",
+      "example_line": 12,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-78",
+            "file": "src/flask_routes.py",
+            "line": 7,
+            "description": "Command injection vulnerability due to unsanitized input 'folder_name' being used in the command string for pexpect.run()."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_78_fastapi_005",
+      "cwe": "CWE-78",
+      "example_line": 16,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpe46v0ywt/src/fastapi_routes.py",
+            "line_number": 17,
+            "issue_text": "Starting a process with a shell, possible injection detected, security issue.",
+            "severity": "HIGH",
+            "confidence": "HIGH",
+            "test_id": "B605",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B605",
+            "reasoning": "The use of os.system with a command constructed from user input (service_name) poses a command injection risk, as the input is not fully sanitized despite using shlex.quote."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_78_flask_006",
+      "cwe": "CWE-78",
+      "example_line": 14,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpkoixdco2/src/flask_routes.py",
+            "line_number": 2,
+            "issue_text": "Consider possible security implications associated with the subprocess module.",
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "test_id": "B404",
+            "cwe_id": 78
+          },
+          {
+            "filename": "/tmp/tmpkoixdco2/src/flask_routes.py",
+            "line_number": 16,
+            "issue_text": "subprocess call with shell=True identified, security issue.",
+            "severity": "HIGH",
+            "confidence": "HIGH",
+            "test_id": "B602",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B602",
+            "reasoning": "The use of subprocess.check_call with shell=True allows for command injection vulnerabilities, especially since the path can be influenced by user input."
+          }
+        ],
+        "rejected_bandit": [
+          {
+            "bandit_id": "B404",
+            "reasoning": "This finding is too vague and does not specify a direct vulnerability. The context of the subprocess usage is critical, and while there are implications, it does not constitute a clear security issue on its own."
+          }
+        ],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/flask_routes.py",
+            "line": 10,
+            "description": "The use of a custom path based on user input (doc_id) allows for potential path traversal attacks, as the user can specify arbitrary values."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_78_fastapi_007",
+      "cwe": "CWE-78",
+      "example_line": 11,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpj8i4insa/src/fastapi_routes.py",
+            "line_number": 12,
+            "issue_text": "Starting a process with a shell, possible injection detected, security issue.",
+            "severity": "HIGH",
+            "confidence": "HIGH",
+            "test_id": "B605",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B605",
+            "reasoning": "The use of the 'commands.getoutput' with a shell command constructed from user input (provider) allows for command injection. If an attacker provides a malicious input for 'provider', they could execute arbitrary commands."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_78_flask_008",
+      "cwe": "CWE-78",
+      "example_line": 16,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmp5y3ii3tf/src/flask_routes.py",
+            "line_number": 16,
+            "issue_text": "Starting a process with a shell, possible injection detected, security issue.",
+            "severity": "HIGH",
+            "confidence": "HIGH",
+            "test_id": "B605",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B605",
+            "reasoning": "The use of os.popen with a command string that includes user input (pattern) allows for command injection, making this a valid vulnerability."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_78_fastapi_009",
+      "cwe": "CWE-78",
+      "example_line": 15,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmp_7ezssol/src/fastapi_routes.py",
+            "line_number": 2,
+            "issue_text": "Consider possible security implications associated with the subprocess module.",
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "test_id": "B404",
+            "cwe_id": 78
+          },
+          {
+            "filename": "/tmp/tmp_7ezssol/src/fastapi_routes.py",
+            "line_number": 16,
+            "issue_text": "subprocess call with shell=True identified, security issue.",
+            "severity": "HIGH",
+            "confidence": "HIGH",
+            "test_id": "B602",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B602",
+            "reasoning": "The use of subprocess.Popen with shell=True allows for command injection if the input (source_url) is not properly sanitized, making it a valid vulnerability."
+          }
+        ],
+        "rejected_bandit": [
+          {
+            "bandit_id": "B404",
+            "reasoning": "This finding is too vague and does not specify a direct vulnerability. The use of subprocess is common, and without specific context indicating misuse, it cannot be considered a valid finding."
+          }
+        ],
+        "semantic_only": [
+          {
+            "cwe": "CWE-78",
+            "file": "src/fastapi_routes.py",
+            "line": 16,
+            "description": "The command constructed with subprocess.Popen includes user input (source_url) without validation, leading to potential command injection vulnerabilities."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_78_flask_010",
+      "cwe": "CWE-78",
+      "example_line": 13,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpiwu1kb6d/src/flask_routes.py",
+            "line_number": 14,
+            "issue_text": "Starting a process with a shell, possible injection detected, security issue.",
+            "severity": "HIGH",
+            "confidence": "HIGH",
+            "test_id": "B605",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B605",
+            "reasoning": "The use of os.system with user input (cleaned_name) allows for command injection, as the cleaning method is insufficient to prevent all shell metacharacters."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_78_fastapi_011",
+      "cwe": "CWE-78",
+      "example_line": 9,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpa0w7qphp/src/fastapi_routes.py",
+            "line_number": 9,
+            "issue_text": "Starting a process with a shell, possible injection detected, security issue.",
+            "severity": "HIGH",
+            "confidence": "HIGH",
+            "test_id": "B605",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B605",
+            "reasoning": "The use of os.popen with a dynamic string (hostname) allows for command injection, as the input is not sanitized or validated."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_78_flask_012",
+      "cwe": "CWE-78",
+      "example_line": 14,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmp87t4rtye/src/flask_routes.py",
+            "line_number": 2,
+            "issue_text": "Consider possible security implications associated with the subprocess module.",
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "test_id": "B404",
+            "cwe_id": 78
+          },
+          {
+            "filename": "/tmp/tmp87t4rtye/src/flask_routes.py",
+            "line_number": 15,
+            "issue_text": "subprocess call with shell=True identified, security issue.",
+            "severity": "HIGH",
+            "confidence": "HIGH",
+            "test_id": "B602",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B602",
+            "reasoning": "The use of subprocess.check_output with shell=True and a user-controlled input (file_path) creates a command injection vulnerability, allowing an attacker to execute arbitrary commands."
+          }
+        ],
+        "rejected_bandit": [
+          {
+            "bandit_id": "B404",
+            "reasoning": "This finding is too vague and does not specify a direct vulnerability. The use of subprocess is common in Python, and without specific context or user input leading to a vulnerability, this is not a valid finding."
+          }
+        ],
+        "semantic_only": [
+          {
+            "cwe": "CWE-78",
+            "file": "src/flask_routes.py",
+            "line": 7,
+            "description": "The command constructed using user input (file_path) is executed with shell=True, which can lead to command injection vulnerabilities."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_78_fastapi_013",
+      "cwe": "CWE-78",
+      "example_line": 13,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpzw455dqn/src/fastapi_routes.py",
+            "line_number": 15,
+            "issue_text": "Starting a process with a shell, possible injection detected, security issue.",
+            "severity": "HIGH",
+            "confidence": "HIGH",
+            "test_id": "B605",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B605",
+            "reasoning": "The use of os.system with user input (input_file and bitrate) can lead to command injection vulnerabilities. The check for 'k' in bitrate is insufficient to prevent malicious input."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_78_flask_014",
+      "cwe": "CWE-78",
+      "example_line": 11,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmp85wt7drk/src/flask_routes.py",
+            "line_number": 12,
+            "issue_text": "Starting a process with a shell, possible injection detected, security issue.",
+            "severity": "HIGH",
+            "confidence": "HIGH",
+            "test_id": "B605",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B605",
+            "reasoning": "The use of os.popen4 with a command string that includes user input (folder) allows for command injection, making this a valid finding."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_78_fastapi_015",
+      "cwe": "CWE-78",
+      "example_line": 10,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmp__9ewdh4/src/fastapi_routes.py",
+            "line_number": 11,
+            "issue_text": "Use of exec detected.",
+            "severity": "MEDIUM",
+            "confidence": "HIGH",
+            "test_id": "B102",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B102",
+            "reasoning": "The use of 'exec' allows for the execution of arbitrary code, which is a classic example of command injection (CWE-78). This is a valid finding as it poses a significant security risk."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_78_flask_016",
+      "cwe": "CWE-78",
+      "example_line": 13,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpr0fwx9q9/src/flask_routes.py",
+            "line_number": 2,
+            "issue_text": "Consider possible security implications associated with the subprocess module.",
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "test_id": "B404",
+            "cwe_id": 78
+          },
+          {
+            "filename": "/tmp/tmpr0fwx9q9/src/flask_routes.py",
+            "line_number": 14,
+            "issue_text": "subprocess call with shell=True identified, security issue.",
+            "severity": "HIGH",
+            "confidence": "HIGH",
+            "test_id": "B602",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B602",
+            "reasoning": "The use of subprocess.call with shell=True allows for command injection vulnerabilities, especially since the log_name parameter is derived from user input without proper validation or sanitization."
+          }
+        ],
+        "rejected_bandit": [
+          {
+            "bandit_id": "B404",
+            "reasoning": "This finding is too vague and does not specify a concrete vulnerability. The specific issue is addressed by B602, which directly points out the command injection risk."
+          }
+        ],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/flask_routes.py",
+            "line": 7,
+            "description": "The log_name parameter is derived from user input and is used to construct a file path, which could lead to path traversal if not properly validated."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_78_fastapi_017",
+      "cwe": "CWE-78",
+      "example_line": 13,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmp7eq6o_pk/src/fastapi_routes.py",
+            "line_number": 14,
+            "issue_text": "Starting a process with a shell, possible injection detected, security issue.",
+            "severity": "HIGH",
+            "confidence": "HIGH",
+            "test_id": "B605",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B605",
+            "reasoning": "The use of os.popen with a command constructed from user input (subject and to) allows for command injection, making this a valid vulnerability."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_78_flask_018",
+      "cwe": "CWE-78",
+      "example_line": 19,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-78",
+            "file": "src/flask_routes.py",
+            "line": 7,
+            "description": "The 'iface' parameter from the request is directly used in a command execution context, which can lead to command injection if not properly validated or sanitized."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_78_fastapi_019",
+      "cwe": "CWE-78",
+      "example_line": 10,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpj0ipksxu/src/fastapi_routes.py",
+            "line_number": 2,
+            "issue_text": "Consider possible security implications associated with the subprocess module.",
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "test_id": "B404",
+            "cwe_id": 78
+          },
+          {
+            "filename": "/tmp/tmpj0ipksxu/src/fastapi_routes.py",
+            "line_number": 12,
+            "issue_text": "subprocess call with shell=True identified, security issue.",
+            "severity": "HIGH",
+            "confidence": "HIGH",
+            "test_id": "B602",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B602",
+            "reasoning": "The use of subprocess.Popen with shell=True allows for command injection vulnerabilities, as user input (the 'path' parameter) is directly passed to the shell command without sanitization."
+          }
+        ],
+        "rejected_bandit": [
+          {
+            "bandit_id": "B404",
+            "reasoning": "This finding is too vague and does not specify a direct vulnerability. While subprocess can have security implications, it does not indicate a specific issue in the provided context."
+          }
+        ],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_78_flask_020",
+      "cwe": "CWE-78",
+      "example_line": 16,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmp9ep0ee12/src/flask_routes.py",
+            "line_number": 17,
+            "issue_text": "Starting a process with a shell, possible injection detected, security issue.",
+            "severity": "HIGH",
+            "confidence": "HIGH",
+            "test_id": "B605",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B605",
+            "reasoning": "The use of os.system with user-supplied input (check_name) allows for command injection, as the command can be manipulated by an attacker."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_78_fastapi_021",
+      "cwe": "CWE-78",
+      "example_line": 10,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpc9261jm7/src/fastapi_routes.py",
+            "line_number": 2,
+            "issue_text": "Consider possible security implications associated with the subprocess module.",
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "test_id": "B404",
+            "cwe_id": 78
+          },
+          {
+            "filename": "/tmp/tmpc9261jm7/src/fastapi_routes.py",
+            "line_number": 11,
+            "issue_text": "subprocess call with shell=True identified, security issue.",
+            "severity": "HIGH",
+            "confidence": "HIGH",
+            "test_id": "B602",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B602",
+            "reasoning": "The use of subprocess.check_output with shell=True allows for command injection if the input parameters (vid_path and timestamp) are not properly sanitized."
+          }
+        ],
+        "rejected_bandit": [
+          {
+            "bandit_id": "B404",
+            "reasoning": "This finding is too vague and does not specify a direct vulnerability. The use of subprocess is common and does not imply a security issue without context."
+          }
+        ],
+        "semantic_only": [
+          {
+            "cwe": "CWE-78",
+            "file": "src/fastapi_routes.py",
+            "line": 5,
+            "description": "The command string is constructed using user input (vid_path and timestamp), which can lead to command injection vulnerabilities."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_78_flask_022",
+      "cwe": "CWE-78",
+      "example_line": 15,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpv9psupcf/src/flask_routes.py",
+            "line_number": 16,
+            "issue_text": "Starting a process without a shell.",
+            "severity": "LOW",
+            "confidence": "MEDIUM",
+            "test_id": "B606",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B606",
+            "reasoning": "The use of 'os.spawnlp' with user-controlled input (query) can lead to command injection if the input is crafted to include special characters or arguments, especially if it starts with '-'."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_78_fastapi_023",
+      "cwe": "CWE-78",
+      "example_line": 18,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmp2plg_i53/src/fastapi_routes.py",
+            "line_number": 2,
+            "issue_text": "Consider possible security implications associated with the subprocess module.",
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "test_id": "B404",
+            "cwe_id": 78
+          },
+          {
+            "filename": "/tmp/tmp2plg_i53/src/fastapi_routes.py",
+            "line_number": 18,
+            "issue_text": "subprocess call with shell=True identified, security issue.",
+            "severity": "HIGH",
+            "confidence": "HIGH",
+            "test_id": "B602",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B602",
+            "reasoning": "The use of subprocess with shell=True can lead to command injection vulnerabilities, especially since the command includes a user-controlled variable (module_name)."
+          }
+        ],
+        "rejected_bandit": [
+          {
+            "bandit_id": "B404",
+            "reasoning": "While the subprocess module can have security implications, this specific finding does not indicate a direct vulnerability since the main concern is with the use of shell=True, which is already covered by B602."
+          }
+        ],
+        "semantic_only": [
+          {
+            "cwe": "CWE-78",
+            "file": "src/fastapi_routes.py",
+            "line": 6,
+            "description": "The command constructed with a user-controlled variable (module_name) and executed with shell=True can lead to command injection."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_78_flask_024",
+      "cwe": "CWE-78",
+      "example_line": 14,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmps73bc9h1/src/flask_routes.py",
+            "line_number": 15,
+            "issue_text": "Starting a process with a shell, possible injection detected, security issue.",
+            "severity": "HIGH",
+            "confidence": "HIGH",
+            "test_id": "B605",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B605",
+            "reasoning": "The use of os.popen with a command string that includes user input (url) allows for command injection, as an attacker can manipulate the input to execute arbitrary commands."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": []
+      }
+    },
+    {
+      "example_id": "cwe_78_fastapi_025",
+      "cwe": "CWE-78",
+      "example_line": 19,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [
+          {
+            "filename": "/tmp/tmpaypj4f59/src/fastapi_routes.py",
+            "line_number": 2,
+            "issue_text": "Consider possible security implications associated with the subprocess module.",
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "test_id": "B404",
+            "cwe_id": 78
+          },
+          {
+            "filename": "/tmp/tmpaypj4f59/src/fastapi_routes.py",
+            "line_number": 20,
+            "issue_text": "Starting a process with a shell, possible injection detected, security issue.",
+            "severity": "HIGH",
+            "confidence": "HIGH",
+            "test_id": "B605",
+            "cwe_id": 78
+          }
+        ],
+        "validated_bandit": [
+          {
+            "bandit_id": "B404",
+            "reasoning": "The use of the subprocess module can lead to command injection vulnerabilities if user input is not properly sanitized. This is valid as the code directly incorporates user input into a command."
+          },
+          {
+            "bandit_id": "B605",
+            "reasoning": "The command is constructed using user input for the 'algo' variable, which can lead to command injection if the input is not validated against a strict whitelist. This is a valid finding."
+          }
+        ],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-78",
+            "file": "src/fastapi_routes.py",
+            "line": 10,
+            "description": "The logic for validating the 'algo' variable is flawed, allowing potentially dangerous commands to be executed if the input is not one of the explicitly allowed values."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_flask_001",
+      "cwe": "CWE-22",
+      "example_line": 14,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/flask_routes.py",
+            "line": 8,
+            "description": "Path traversal vulnerability due to unsanitized user input in 'theme_name' and 'asset_path', allowing access to arbitrary files."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_fastapi_002",
+      "cwe": "CWE-22",
+      "example_line": 12,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/fastapi_routes.py",
+            "line": 8,
+            "description": "Path traversal vulnerability due to insufficient sanitization of the image_id parameter, allowing for traversal beyond the intended directory."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_flask_003",
+      "cwe": "CWE-22",
+      "example_line": 18,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/flask_routes.py",
+            "line": 10,
+            "description": "Path traversal vulnerability due to insufficient validation of the 'file' parameter, allowing access to arbitrary files in the log directory."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_fastapi_004",
+      "cwe": "CWE-22",
+      "example_line": 13,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/fastapi_routes.py",
+            "line": 8,
+            "description": "Path traversal vulnerability due to concatenation of user-controlled 'partition' and 'filename' with a base path, allowing access to arbitrary files outside the intended directory."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_flask_005",
+      "cwe": "CWE-22",
+      "example_line": 15,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/flask_routes.py",
+            "line": 9,
+            "description": "Path traversal vulnerability due to unsanitized user input in 'doc' parameter, allowing access to arbitrary files."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_fastapi_006",
+      "cwe": "CWE-22",
+      "example_line": 13,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/fastapi_routes.py",
+            "line": 7,
+            "description": "Path traversal vulnerability due to the use of os.path.abspath without validating that the resulting path is within the BASE_DIR."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_flask_007",
+      "cwe": "CWE-22",
+      "example_line": 15,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/flask_routes.py",
+            "line": 8,
+            "description": "Path traversal vulnerability due to insufficient validation of 'report_id'. The code only replaces '..' but does not handle URL encoded dots, allowing for potential traversal using encoded sequences like '%2e%2e/'."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_fastapi_008",
+      "cwe": "CWE-22",
+      "example_line": 13,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/fastapi_routes.py",
+            "line": 10,
+            "description": "Path Traversal vulnerability due to the use of user-controlled input (locale_code) to construct a file path without proper validation or sanitization."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_flask_009",
+      "cwe": "CWE-22",
+      "example_line": 15,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/flask_routes.py",
+            "line": 8,
+            "description": "The user input 'user_folder' is used to create a directory path without proper validation, allowing for path traversal attacks."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_fastapi_010",
+      "cwe": "CWE-22",
+      "example_line": 16,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/fastapi_routes.py",
+            "line": 10,
+            "description": "Path traversal vulnerability due to insufficient validation of img_path, allowing access to files outside the intended directory."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_flask_011",
+      "cwe": "CWE-22",
+      "example_line": 13,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/flask_routes.py",
+            "line": 9,
+            "description": "Path traversal vulnerability due to unsanitized user input in 'file' parameter allowing access to arbitrary files."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_fastapi_012",
+      "cwe": "CWE-22",
+      "example_line": 11,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/fastapi_routes.py",
+            "line": 8,
+            "description": "The 'name' parameter is directly used to construct a file path, which can lead to path traversal vulnerabilities if an attacker provides a relative path (e.g., '../') or an absolute path."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_flask_013",
+      "cwe": "CWE-22",
+      "example_line": 13,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/flask_routes.py",
+            "line": 8,
+            "description": "Path traversal vulnerability due to insufficient validation of the 'path' parameter, allowing access to arbitrary files outside the intended directory."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_fastapi_014",
+      "cwe": "CWE-22",
+      "example_line": 11,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/fastapi_routes.py",
+            "line": 8,
+            "description": "Path Traversal vulnerability due to the use of os.path.normpath and os.path.join, allowing for traversal outside the intended directory."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_flask_015",
+      "cwe": "CWE-22",
+      "example_line": 11,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/flask_routes.py",
+            "line": 8,
+            "description": "Path Traversal vulnerability due to the use of 'path' converter in Flask, allowing an attacker to access arbitrary files on the server by manipulating the 'img_url' parameter."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_fastapi_016",
+      "cwe": "CWE-22",
+      "example_line": 11,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/fastapi_routes.py",
+            "line": 6,
+            "description": "Path Traversal vulnerability due to user-controlled 'plugin_id' allowing access to arbitrary files."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_flask_017",
+      "cwe": "CWE-22",
+      "example_line": 12,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/flask_routes.py",
+            "line": 8,
+            "description": "The 'token' parameter is directly concatenated into a file path, allowing for path traversal attacks. An attacker could manipulate the 'token' value to access arbitrary files on the server."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_fastapi_018",
+      "cwe": "CWE-22",
+      "example_line": 10,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/fastapi_routes.py",
+            "line": 8,
+            "description": "Path traversal vulnerability due to unsanitized user input in 'lang' and 'page' parameters, allowing an attacker to read arbitrary files."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_flask_019",
+      "cwe": "CWE-22",
+      "example_line": 15,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/flask_routes.py",
+            "line": 8,
+            "description": "Path traversal vulnerability exists because the code does not properly sanitize the 'filename' input, allowing for the use of '..' to traverse directories."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_fastapi_020",
+      "cwe": "CWE-22",
+      "example_line": 10,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/fastapi_routes.py",
+            "line": 6,
+            "description": "Path traversal vulnerability due to unsanitized user input in the user_id parameter, allowing an attacker to access arbitrary files on the server."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_flask_021",
+      "cwe": "CWE-22",
+      "example_line": 13,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/flask_routes.py",
+            "line": 8,
+            "description": "The use of os.path.relpath does not sanitize the input, allowing for potential path traversal attacks."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_fastapi_022",
+      "cwe": "CWE-22",
+      "example_line": 10,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/fastapi_routes.py",
+            "line": 8,
+            "description": "Path Traversal vulnerability due to unsanitized user input in the file path construction, allowing an attacker to access arbitrary files on the server."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_flask_023",
+      "cwe": "CWE-22",
+      "example_line": 12,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/flask_routes.py",
+            "line": 7,
+            "description": "Path traversal vulnerability due to unsanitized user input in 'key' allowing access to arbitrary files."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_fastapi_024",
+      "cwe": "CWE-22",
+      "example_line": 10,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/fastapi_routes.py",
+            "line": 6,
+            "description": "Path traversal vulnerability due to unsanitized user input in the log_path variable, allowing an attacker to access arbitrary files."
+          }
+        ]
+      }
+    },
+    {
+      "example_id": "cwe_22_flask_025",
+      "cwe": "CWE-22",
+      "example_line": 11,
+      "agent_result": {
+        "success": true,
+        "bandit_findings": [],
+        "validated_bandit": [],
+        "rejected_bandit": [],
+        "semantic_only": [
+          {
+            "cwe": "CWE-22",
+            "file": "src/flask_routes.py",
+            "line": 7,
+            "description": "The use of user input 'subpath' in os.path.join can lead to path traversal vulnerabilities, allowing access to files outside the intended directory."
+          }
+        ]
+      }
+    }
+  ]
+}
