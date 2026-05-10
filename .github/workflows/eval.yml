@@ -1,0 +1,60 @@
+name: Evaluation Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+    
+    - name: Install uv
+      run: |
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+        echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+    
+    - name: Install dependencies
+      run: |
+        uv venv
+        source .venv/bin/activate
+        uv pip install -r requirements.txt
+    
+    - name: Run evaluation
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      run: |
+        source .venv/bin/activate
+        python eval/run_eval.py
+    
+    - name: Check metrics threshold
+      run: |
+        source .venv/bin/activate
+        python -c "
+import json
+with open('eval/results.json') as f:
+    data = json.load(f)
+metrics = data['metrics']['semantic_reviewer']
+assert metrics['f1'] >= 0.95, f'F1 {metrics[\"f1\"]:.3f} below threshold 0.95'
+assert metrics['recall'] >= 0.95, f'Recall {metrics[\"recall\"]:.3f} below threshold 0.95'
+print('✓ Metrics pass threshold')
+        "
+    
+    - name: Upload eval results
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: eval-results
+        path: |
+          eval/results.json
+          eval/report.md
