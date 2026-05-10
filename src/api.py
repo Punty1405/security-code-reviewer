@@ -8,7 +8,7 @@ import os
 from pathlib import Path
 from typing import Optional
 from fastapi import FastAPI, File, Form, UploadFile, HTTPException
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 from pydantic import BaseModel
 
 from src.graph import app as agent_app
@@ -186,3 +186,8 @@ async def health_check():
     Health checkpoint
     """
     return {'status': 'Healthy', 'service': 'security-code-reviewer'}
+
+@app.get("/")
+async def root():
+    """Redirect to docs"""
+    return RedirectResponse(url="/docs")
