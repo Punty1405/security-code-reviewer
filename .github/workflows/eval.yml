@@ -35,12 +35,12 @@ jobs:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
         source .venv/bin/activate
-        python eval/run_eval.py
+        python -m eval.run_eval
     
     - name: Check metrics threshold
       run: |
         source .venv/bin/activate
-        python eval/check_threshold.py
+        python -m eval.check_threshold
     
     - name: Upload eval results
       if: always()
