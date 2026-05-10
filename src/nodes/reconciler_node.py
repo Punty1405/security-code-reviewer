@@ -12,7 +12,6 @@ def reconcile_findings(state: AgentState) -> AgentState:
     rejected = state['rejected_bandit']
     semantic = state['semantic_only']
 
-    # Combine all the findings (validated + semantic_only)
     all_findings = validated + semantic
 
     # Format as JSON

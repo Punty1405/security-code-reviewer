@@ -1,0 +1,20 @@
+diff --git a/src/admin_routes.py b/src/admin_routes.py
+index 0000000..1111111 100644
+--- a/src/admin_routes.py
++++ b/src/admin_routes.py
+@@ -23,1 +23,1 @@
++    query = f"SELECT id, username, email, department FROM users WHERE status = ? AND department = ? ORDER BY {sort_by} ASC"
+
+diff --git a/src/network_utils.py b/src/network_utils.py
+index 0000000..1111111 100644
+--- a/src/network_utils.py
++++ b/src/network_utils.py
+@@ -11,1 +11,1 @@
++        cmd = "ping -c 1 %s" % target
+
+diff --git a/src/product_routes.py b/src/product_routes.py
+index 0000000..1111111 100644
+--- a/src/product_routes.py
++++ b/src/product_routes.py
+@@ -15,1 +15,1 @@
++    query = f"SELECT * FROM products WHERE category = ? LIMIT {limit} OFFSET {offset}"

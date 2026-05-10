@@ -30,7 +30,7 @@ def build_graph():
     graph.add_edge("reconciler", END)
 
     # compile
-    return graph.compile()
+    return graph.compile(checkpointer=None)
 
 @traceable(name='security_review_dag', tags=['test'])
 def run_security_review(zip_path: str, diff_text: str, tags=None):
@@ -53,6 +53,8 @@ def run_security_review(zip_path: str, diff_text: str, tags=None):
         )
 
     return result
+
+app = build_graph()
 
 if __name__=='__main__':
     # Test the graph structure

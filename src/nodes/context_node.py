@@ -62,9 +62,9 @@ def parse_diff_files(diff_text: str) -> List[str]:
 
     # Match lines like: +++ b/src/routes.py
     for line in diff_text.split('\n'):
+        line = line.strip()
         if line.startswith('+++') or line.startswith('---'):
             # Extract path after 'b/' or 'a/'
-            print(f"Found diff line: {line}")
             match = re.search(r'[ab]/(.*)', line)
             if match:
                 filepath = match.group(1)
